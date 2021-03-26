@@ -1,0 +1,49 @@
+<h1 [ngStyle]="{color: 'blue'}">Liste des tâches à réaliser</h1>
+<p>Nous sommes le {{today | date: 'dd/MM/yyyy'}}</p>
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let todo of todos, let i = index">
+    <!-- {{todo | json}} pour debuger -->
+    <div [ngClass]="{encours:todo.todoStatus,terminee:!todo.todoStatus}">
+      <a [href]="todo.image">
+        <img [src]="todo.image" />
+      </a>
+      {{ todo.todoName | lowercase}}
+      <button
+        class="btn btn-primary mr-1"
+        [disabled]="todo.todoStatus"
+        (click)="onChangeStatus(i)"
+      >
+        En cours
+      </button>
+      <button
+        class="btn btn-success mr-1"
+        [disabled]="!todo.todoStatus"
+        (click)="onChangeStatus(i)"
+      >
+        Terminée
+      </button>
+
+      <!-- Action de modification -->
+      <button
+        class="btn btn-danger mr-1" *ngIf="!todo.isModif"
+        (click)="onChangeIsModif(i)"
+      >
+        Modifier
+      </button>
+      <button
+        class="btn btn-success mr-1" *ngIf="todo.isModif"
+        (click)="onChangeIsModif(i)"
+      >
+       modification terminée
+      </button>
+      <button
+        class="btn btn-success mr-1"
+        (click)="onView(i)"
+      >
+       More
+      </button>
+      <input *ngIf="todo.isModif" class="form-control" [(ngModel)] = "todo.todoName" />
+
+    </div>
+  </li>
+</ul>

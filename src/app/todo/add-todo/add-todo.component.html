@@ -1,0 +1,26 @@
+<h1>Add a task to do</h1>
+<!-- {{todo | json}} vérification de la fonctionalité du formulaire en json dans le front de l'api pour dbugger-->
+<form #addTodoForm="ngForm">
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Title of To Do</label>
+    <input type="text" class="form-control" id="ToDoInput" placeholder="To do Title" name="todoName" [(ngModel)] = "todo.todoName" required> <!--required est un attribut lier a angular qui permet de vérifier si le champs à été visiter et remplis -->
+  </div>
+  <div class="mb-3">
+    <label for="exampleFormControlTextarea1" class="form-label">Description To Do</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description" [(ngModel)] = "todo.description" required></textarea>
+  </div>
+  <div class="mb-3">
+    <label for="" class="form-label">Url by image</label>
+    <input type="text" class="form-control" id="ToDoInput" placeholder="url by image" name="image" [(ngModel)] = "todo.image" required>
+  </div>
+  <div class="mb-3">
+    <select class="form-control"
+    name="todoStatus" [(ngModel)] = "todo.todoStatus" required>
+      <option value="true">In progress</option>
+      <option value="false">Complete</option>
+    </select>
+  </div>
+  <button [disabled]="!addTodoForm.valid" type="button" (click)="onSubmit()" class="btn btn-success btn-lg">Add</button>
+</form>
+<!-- #addTodoForm="ngform" c'est une directive pour les formulaire ça permet d'avoir une référence (vérifier l'état) pour le formulaire
+pour le tester il faut le mettre dans le bouton pour le desactiver si tout les champs ne sont pas remplis ex [disabled]="!addTodoForm.valid": -->
