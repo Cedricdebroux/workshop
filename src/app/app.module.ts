@@ -12,7 +12,6 @@ import { ContactComponent } from './contact/contact.component';
 import { RouterModule, Routes } from "@angular/router";
 import { AddTodoComponent } from './todo/add-todo/add-todo.component';
 import { UsersComponent } from './users/users.component';
-import { AddUserComponent } from './users/add-user/add-user.component';
 
 export const ROUTES : Routes = [
   {path:'home', component: HomeComponent},
@@ -36,7 +35,6 @@ export const ROUTES : Routes = [
     ContactComponent,
     AddTodoComponent,
     UsersComponent,
-    AddUserComponent,
   ],
   imports: [
     BrowserModule,
